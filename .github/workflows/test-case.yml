@@ -10,7 +10,7 @@
                       workflow_dispatch:
                     
                     jobs:
-                      start:
+                      initiating:
                         runs-on: ubuntu-latest
                         steps:
                           - uses: actions/checkout@v2
