@@ -1,0 +1,40 @@
+                    name: Run Test Case
+                    
+                    on:
+                      push:
+                        branches:
+                          - dev
+                      pull_request:
+                        branches:
+                          - dev
+                      workflow_dispatch:
+                    
+                    jobs:
+                      start:
+                        runs-on: ubuntu-latest
+                        steps:
+                          - uses: actions/checkout@v2
+                          - name: start
+                            run: echo "Start running test cases"
+                            shell: bash
+                    
+                      run_test_cases:
+                        runs-on: ubuntu-latest
+                        steps:
+                          - uses: actions/checkout@v2
+                          - name: Run Test Cases
+                            run: |
+                              echo "Running Test Cases"
+                              npm ci
+                              npm run test
+                              echo "Test Cases Executed"
+                            shell: bash
+                    
+                      end:
+                        runs-on: ubuntu-latest
+                        steps:
+                          - name: end
+                            run: echo "END running test cases"
+                            shell: bash
+                    
+                       
