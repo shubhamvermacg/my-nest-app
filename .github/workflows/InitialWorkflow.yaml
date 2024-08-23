@@ -29,7 +29,32 @@
                               npm ci
                               npm run test
                               echo "Test Cases Executed"
-                            shell: bash     
+                            shell: bash
 
+                      lint:
+                        runs-on: ubuntu-latest
+                        needs: initiating
+                        steps:
+                          - name: Checkout code
+                            uses: actions/checkout@v2
+
+                          - name: Set up Node.js
+                            uses: actions/setup-node@v3
+                            with:
+                              node-version: '16'
+
+                          - name: Install dependencies
+                            run: npm install
+
+                          - name: Run ESLint
+                            run: npm run lint      
+                    
+                      end:
+                        runs-on: ubuntu-latest
+                        needs: initiating
+                        steps:
+                          - name: end
+                            run: echo "Process End"
+                            shell: bash
                     
                        
