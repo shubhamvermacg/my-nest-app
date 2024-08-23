@@ -17,3 +17,18 @@
                           - name: start
                             run: echo "Start running test cases"
                             shell: bash
+                    
+                      run_test_cases:
+                        runs-on: ubuntu-latest
+                        steps:
+                          - uses: actions/checkout@v2
+                          - name: Run Test Cases
+                            run: |
+                              echo "Running Test Cases"
+                              npm ci
+                              npm run test
+                              echo "Test Cases Executed"
+                            shell: bash     
+
+                    
+                       
